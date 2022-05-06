@@ -1,7 +1,10 @@
 import express from 'express';
-import { router } from './router';
+import * as ejs from 'ejs';
+import { router } from './router.js';
 const app = express();
 
+app.engine('html', ejs.renderFile);
+app.set('view engine', 'html');
 app.use('/', router);
 
 app.listen(3000, () => {
